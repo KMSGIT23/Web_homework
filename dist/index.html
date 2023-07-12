@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <h1></h1>
+<head>
+  <style>
+    .slider {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .slides {
+      display: flex;
+      width: 300%;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+      width: 80.33%;
+    }
+    #img1{
+        border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div><h1>KMS</h1></div><hr>
+  <div class="slider">
+    <div class="slides">
+      <div class="slide">
+        <h1>나를 소개합니다</h1>
+        <img id="img1" src="스크린샷(48).png">
+        <ul>
+            <li>Kim Min Sung</li>
+            <li>배우고 성장하는 것을 좋아하는 개발자</li>
+            <li>Bssm 재학 중</li>
+            <li>Python 취미</li>
+        </ul>
+        <h4>배우는 것</h4>
+        <ul>
+            <li>python</li>
+            <li>c language</li>
+            <li>html, css, js</li>
+            <li>arduino</li>
+        </ul>
+      </div>
+      <div class="slide">
+        <h1>나의 Github</h1>
+        <ul>
+            <li>나의 잔디</li>
+            <li><a href="https://github.com/KMSGIT23">Github</a></li>
+            <li>python 코드(위키독스)</li>
+        </ul>
+      </div>
+      <div class="slide">
+        <h1>나의 Blog</h1>
+        <ul>
+            <li>내가 배운 것들</li>
+            <li><a href="https://studyhardaboutcoding.tistory.com/">Blog</a></li>
+            <li>그 외</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const slider = document.querySelector('.slider');
+    const slides = document.querySelector('.slides');
+    const slideWidth = slider.offsetWidth;
+
+    let currentIndex = 0;
+
+    function goToSlide(index) {
+      slides.style.transform = `translateX(-${slideWidth * index}px)`;
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.children.length;
+      goToSlide(currentIndex);
+    }
+
+    function previousSlide() {
+      currentIndex = (currentIndex - 1 + slides.children.length) % slides.children.length;
+      goToSlide(currentIndex);
+    }
+
+    setInterval(nextSlide, 8000);
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowLeft') {
+        previousSlide();
+      } else if (event.key === 'ArrowRight') {
+        nextSlide();
+      }
+    });
+  </script>
+</body>
+</html>
